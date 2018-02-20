@@ -79,7 +79,7 @@ export default class Image extends React.Component<ImageProps, ImageState> {
                     hasPreview && (
                         <RNImage
                             source={{ uri: preview }}
-                            resizeMode={{ resizeMode }}
+                            resizeMode={resizeMode}
                             style={computedStyle}
                             blurRadius={Platform.OS === "android" ? 0.5 : 0}
                         />
@@ -89,7 +89,7 @@ export default class Image extends React.Component<ImageProps, ImageState> {
                     (uri && uri !== preview) && (
                         <RNImage
                             source={{ uri }}
-                            resizeMode={{ resizeMode }}
+                            resizeMode={resizeMode}
                             style={computedStyle}
                         />
                     )
