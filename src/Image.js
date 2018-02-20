@@ -66,7 +66,7 @@ export default class Image extends React.Component<ImageProps, ImageState> {
 
     render(): React.Node {
         const {style: computedStyle} = this;
-        const {preview, style} = this.props;
+        const {preview, style, resizeMode = "cover"} = this.props;
         const {uri, intensity} = this.state;
         const hasPreview = !!preview;
         const opacity = intensity.interpolate({
@@ -79,7 +79,7 @@ export default class Image extends React.Component<ImageProps, ImageState> {
                     hasPreview && (
                         <RNImage
                             source={{ uri: preview }}
-                            resizeMode="cover"
+                            resizeMode={{ resizeMode }}
                             style={computedStyle}
                             blurRadius={Platform.OS === "android" ? 0.5 : 0}
                         />
@@ -89,7 +89,7 @@ export default class Image extends React.Component<ImageProps, ImageState> {
                     (uri && uri !== preview) && (
                         <RNImage
                             source={{ uri }}
-                            resizeMode="cover"
+                            resizeMode={{ resizeMode }}
                             style={computedStyle}
                         />
                     )
